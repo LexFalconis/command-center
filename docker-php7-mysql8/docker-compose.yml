@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     volumes:
-      - db-data:/var/lib/mysql
+      - ./db-data:/var/lib/mysql
     ports:
       - 3307:3306
     command: mysqld --default-authentication-plugin=mysql_native_password --sql_mode=""
