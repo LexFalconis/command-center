@@ -710,3 +710,5 @@ yarn-error.log
 *.~lock.*
 
 docker-compose-local.yml
+
+*/db-data
