@@ -48,18 +48,30 @@ RUN docker-php-ext-install exif
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install gettext
 RUN docker-php-ext-install intl
+RUN docker-php-ext-install interbase
 RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install mcrypt
+RUN docker-php-ext-install mysql
+RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install pdo_pgsql
 RUN docker-php-ext-install soap
+RUN docker-php-ext-install sockets
 RUN docker-php-ext-install tidy
 RUN docker-php-ext-install xmlrpc
 RUN docker-php-ext-install xsl
 RUN docker-php-ext-install zip
 RUN docker-php-ext-configure hash --with-mhash
 
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/lib/x86_64-linux-gnu/ --with-jpeg-dir=/usr/lib/x86_64-linux-gnu/
+
+RUN docker-php-ext-configure mssql --with-libdir=/usr/lib/x86_64-linux-gnu && \
+    docker-php-ext-install mssql
+
+RUN docker-php-ext-configure pdo_dblib --with-libdir=/usr/lib/x86_64-linux-gnu && \
+    docker-php-ext-install pdo_dblib
+
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure zip --with-libzip;
 
@@ -71,6 +83,9 @@ RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 
 # Time Zone
 RUN echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezone.ini
+
+# SET timezone
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Install Composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
