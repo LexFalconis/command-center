@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2020-09-13
 ### Added
 - Add Docker mas básica com PHP 7.2 e Mysql 8.0
 
