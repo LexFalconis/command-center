@@ -1,0 +1,28 @@
+version: '2.1'
+services:
+  database:
+    image: mysql/mysql-server:8.0
+    container_name: basic-database
+    env_file:
+      - .env
+    volumes:
+      - ./db-data:/var/lib/mysql
+    ports:
+      - 3307:3306
+    command: mysqld --default-authentication-plugin=mysql_native_password --sql_mode=""
+
+  application:
+    build: .
+    container_name: application-basic
+    volumes:
+      - .:/var/www/html
+      - ./web/php/php-ini-overrides.ini:/usr/local/etc/php/php.ini
+      - ./web/php/date_timezone-overrides.ini:/usr/local/etc/php/conf.d/date_timezone.ini
+      - ./web/sites-available:/etc/apache2/sites-available
+    expose:
+      - "80"
+    ports:
+      - "80:80"
+
+volumes:
+  db-data:
