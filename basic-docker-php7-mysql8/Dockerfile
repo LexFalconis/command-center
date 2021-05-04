@@ -76,9 +76,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Composer Parallel
-RUN composer global require hirak/prestissimo
-
 # Install XDebug
 RUN pecl install xdebug-2.6.0
 RUN docker-php-ext-enable xdebug
