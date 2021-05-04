@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2021-05-04
 ### Added
 - Add Docker com PHP 7.4.11, Mysql 8.0 e Nginx
 
