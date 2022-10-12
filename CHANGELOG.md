@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2022-10-12
+### Added
+- Add Docker com PHP 8.0.20, Mysql 8.0 e Nginx
+- Add Docker com PHP 7.4.30, Mysql 8, Nginx e Framework PhalconPHP;
+
 ## [1.2.0] - 2021-05-04
 ### Added
 - Add Docker com PHP 7.4.11, Mysql 8.0 e Nginx
